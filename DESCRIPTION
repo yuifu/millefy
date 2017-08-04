@@ -1,0 +1,23 @@
+Package: millefy
+Type: Package
+Title: Make millefy plot with single-cell RNA-seq data
+Version: 0.1.0
+Author: Haruka Ozaki
+Maintainer: Haruka Ozaki <harukao.cb@gmail.com>
+Description: Make millefy plot
+License: MIT + file LICENSE
+LazyData: TRUE
+Suggests:
+	testthat
+Imports:
+	Rsamtools,
+	GenomicRanges,
+	data.table,
+	dplyr,
+	magrittr,
+	grid,
+	destiny,
+	rtracklayer,
+	IRanges,
+	tidyr
+RoxygenNote: 5.0.1
