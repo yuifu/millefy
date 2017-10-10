@@ -8,6 +8,10 @@ makeCoverageMatrixBw <- function(path_bw_files, select, nbin, binsize){
   for(i in seq_along(path_bw_files)){
     path_bw <- path_bw_files[i]
     
+    if(! select@seqinfo@seqnames %in% seqnames(seqinfo(BigWigFile(path_bw))) ){
+    	next
+    }
+    
     cov <- import(path_bw, selection = select, as = 'NumericList')[[1]]
     mat[i,] <- coverageIntoFixedBins(cov, binsize)
   }

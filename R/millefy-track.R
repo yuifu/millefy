@@ -282,10 +282,7 @@ plotCoverageTrack <- function(track, select, nbin, binsize, max_value){
   col_ratio <- unit(c(1,1,4,1), c("null","cm", "null", "null"))
   
   #     return(list(mat = mat_a, groups = groups_a, color_labels = color_labels_a))
-  groups <- track$groups
-  if(!is.factor(groups)){
-    groups <- factor(groups, levels = unique(groups))
-  }
+  groups <- factor(track$groups)
  
   if(is.null(track$mat)){
     if( (!is.null(track$isBw)) && track$isBw==TRUE ){
