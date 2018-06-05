@@ -1,3 +1,18 @@
+#' Calculate normalization factors for visualization of BAM files
+#' 
+#' @param bam_files A character vector containing paths to BAM files
+#' @param scaleFactor A numeric vector of normalization factors (1/(total mapped reads)*scaleFactor)
+#' @return bamNormFactors numeric vector
+#' @export
+#'
+#' @examples
+#' # Gene annotation track (For faster performance, try to use \code{dt_gtf} paramter)
+#' bam_files = c("example1.bam", "example2.bam")
+#' normFactors = calcBamNormFactors(bam_files)
+calcBamNormFactors <- function(bam_files, scaleFactor = 10^6){
+  counts <- getBamCounts(bam_files)
+  1/counts*scaleFactor
+}
 
 getBamCounts <- function(bam_files){
   param <- ScanBamParam(flag=scanBamFlag(isUnmappedQuery=FALSE))
@@ -6,11 +21,6 @@ getBamCounts <- function(bam_files){
   })
 }
 
-
-calcBamNormFactors <- function(bam_files, scaleFactor = 10^6){
-  counts <- getBamCounts(bam_files)
-  1/counts*scaleFactor
-}
 
 
 #######################################################################################################
