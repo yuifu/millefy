@@ -21,4 +21,3 @@ path_gtf = "annotation/gencode.gtf"
 dt_gtf_exon <- gtfToDtExon(path_gtf) 
 geneTrack1 <- list(path_gtf = path_gtf, dt_gtf = dt_gtf_exon, label = "GENCODE")
 }
-

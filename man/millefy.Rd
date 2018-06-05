@@ -8,4 +8,3 @@
 \description{
 Make a millefy plot, a visualization of massive single-cell RNA-Seq data
 }
-

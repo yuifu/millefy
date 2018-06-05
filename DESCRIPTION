@@ -1,7 +1,7 @@
 Package: millefy
 Type: Package
 Title: Make millefy plot with single-cell RNA-seq data
-Version: 0.1.3
+Version: 0.1.4
 Author: Haruka Ozaki
 Maintainer: Haruka Ozaki <harukao.cb@gmail.com>
 Description: Make millefy plot
@@ -20,4 +20,4 @@ Imports:
 	rtracklayer,
 	IRanges,
 	tidyr
-RoxygenNote: 5.0.1
+RoxygenNote: 6.0.1
