@@ -33,7 +33,7 @@ makeCoverageMatrix <- function(path_bam_files, selection, nbin, binsize, normFac
   for(i in seq_along(path_bam_files)){
     path_bam <- path_bam_files[i]
 
-    if (!as.character(seqnames(selection)[1]) %in% names(scanBamHeader(file)[[1]]$targets)){
+    if (!as.character(seqnames(selection)[1]) %in% names(scanBamHeader(path_bam)[[1]]$targets)){
       next
     }
     

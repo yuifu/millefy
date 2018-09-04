@@ -5,10 +5,10 @@
 \title{Visualize single-cell RNA-Seq data}
 \usage{
 millefyPlot4(track_data, track_type, heights, sc_type = c("coverage",
-  "heatmap"), chr, start, end, binsize, title, axis = TRUE, axis_height = 1,
-  sc_avg = TRUE, sc_avg_height = 1, sc_avg_scale = NA,
-  sc_avg_log = FALSE, sc_average_mode = c("mean", "median"),
-  sc_sort_destiny = c("none", "all", "group"))
+  "heatmap"), chr, start, end, binsize, title, axis = TRUE,
+  axis_height = 1, sc_avg = TRUE, sc_avg_height = 1,
+  sc_avg_scale = NA, sc_avg_log = FALSE, sc_average_mode = c("mean",
+  "median"), sc_sort_destiny = c("none", "all", "group"))
 }
 \arguments{
 \item{Description}{of parameters}
