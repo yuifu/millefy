@@ -1,7 +1,7 @@
 Package: millefy
 Type: Package
 Title: Make millefy plot with single-cell RNA-seq data
-Version: 0.1.4
+Version: 0.1.5
 Author: Haruka Ozaki
 Maintainer: Haruka Ozaki <harukao.cb@gmail.com>
 Description: Make millefy plot

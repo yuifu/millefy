@@ -25,15 +25,19 @@ getBamCounts <- function(bam_files){
 
 #######################################################################################################
 
-makeCoverageMatrix <- function(path_bam_files, select, nbin, binsize, normFactor){
+makeCoverageMatrix <- function(path_bam_files, selection, nbin, binsize, normFactor){
   print(sprintf("Start importing BAM: %s", Sys.time()))
   
   mat <- matrix(0, ncol = nbin, nrow = length(path_bam_files))
   
   for(i in seq_along(path_bam_files)){
     path_bam <- path_bam_files[i]
+
+    if (!as.character(seqnames(selection)[1]) %in% names(scanBamHeader(file)[[1]]$targets)){
+      next
+    }
     
-    cov <- getCoverageFromSplicedBamImport(path_bam, select)
+    cov <- getCoverageFromSplicedBamImport(path_bam, selection)
     cov <- coverageIntoFixedBins(cov, binsize)
     # cov[cov == 0] <- NA_integer_
     # print(dim(mat))
@@ -63,35 +67,27 @@ splicedBamImport2 <- function (file, selection) {
     stop("Unable to find index for BAM file '", file, "'. You can
          build an index using the following command:\n\t",
          "library(Rsamtools)\n\tindexBam(\"", file, "\")")
-  sinfo <- scanBamHeader(file)[[1]]
-  res <- if (!as.character(seqnames(selection)[1]) %in%
-             names(sinfo$targets)) {
-    mcols(selection) <- DataFrame(score = 0)
-    selection
-  }else {
-    param <- ScanBamParam(what = c("pos", "strand", "cigar"),
-                          which = selection, flag =
-                            scanBamFlag(isUnmappedQuery = FALSE))
-    x <- scanBam(file, param = param)[[1]]
-    # print(str(x))
-    if(length(x[["pos"]]) == 0){
-      return(numeric(0))
-    }
-    #     return(x[["cigar"]])
-    
-    
-    lpwl <- lapply(seq_along(x[["pos"]]), function(y){returnPosAndWidthForCigar2(x[["pos"]][y], x[["cigar"]][y])})
-    # lpl <- lapply(seq_along(x[["pos"]]), function(y){returnPosForCigar(x[["pos"]][y], x[["cigar"]][y])})
-    # lwl <- lapply(seq_along(x[["pos"]]), function(y){returnWidthForCigar(x[["pos"]][y], x[["cigar"]][y])})
-    lpl <- lapply(lpwl, function(y){y$pos})
-    lwl <- lapply(lpwl, function(y){y$width})
-    
-    gr <- GRanges(strand=rep(x[["strand"]], sapply(lpl, length)),  # Rle object, character vector, or factor containing the strand information.
-                  ranges=IRanges(start = unlist(lpl), width = unlist(lwl)),  #An IRanges object containing the ranges.
-                  seqnames=seqnames(selection)[1])
-    return(gr)
 
+  param <- ScanBamParam(what = c("pos", "strand", "cigar"),
+                        which = selection, flag =
+                          scanBamFlag(isUnmappedQuery = FALSE))
+  x <- scanBam(file, param = param)[[1]]
+  # print(str(x))
+  if(length(x[["pos"]]) == 0){
+    return(numeric(0))
   }
+  #     return(x[["cigar"]])
+  
+  lpwl <- lapply(seq_along(x[["pos"]]), function(y){returnPosAndWidthForCigar2(x[["pos"]][y], x[["cigar"]][y])})
+  # lpl <- lapply(seq_along(x[["pos"]]), function(y){returnPosForCigar(x[["pos"]][y], x[["cigar"]][y])})
+  # lwl <- lapply(seq_along(x[["pos"]]), function(y){returnWidthForCigar(x[["pos"]][y], x[["cigar"]][y])})
+  lpl <- lapply(lpwl, function(y){y$pos})
+  lwl <- lapply(lpwl, function(y){y$width})
+  
+  gr <- GRanges(strand=rep(x[["strand"]], sapply(lpl, length)),  # Rle object, character vector, or factor containing the strand information.
+                ranges=IRanges(start = unlist(lpl), width = unlist(lwl)),  #An IRanges object containing the ranges.
+                seqnames=seqnames(selection)[1])
+  return(gr)
 }
 
 splicedBamImport <- function (file, selection) {
@@ -120,26 +116,6 @@ splicedBamImport <- function (file, selection) {
                   ranges=returnIRangesForCigars(x[["pos"]], x[["cigar"]]),  #An IRanges object containing the ranges.
                   seqnames=seqnames(selection)[1])
     return(gr)
-    
-    
-    
-    #    grs <- split(gr, strand(gr))
-    #    cov <- lapply(grs[c("+", "-")], function(y)
-    #      coverage(ranges(y),
-    #               width=end(selection)))
-    #    pos <- sort(unique(unlist(lapply(cov, function(y) c(start(y),
-    #                                                        end(y))))))
-    #    if(length(pos)==0){
-    #      mcols(selection) <- DataFrame(plus=0, minus=0)
-    #      selection
-    #    }else{
-    #      GRanges(seqnames = seqnames(selection)[1],
-    #              ranges=IRanges(start=head(pos, -1), end=tail(pos, -1)),
-    #              plus=as.numeric(cov[["+"]][head(pos, -1)]),
-    #              minus=-as.numeric(cov[["-"]][head(pos, -1)]))
-    #    }
-    #  }
-    #  return(res)
   }
 }
 
