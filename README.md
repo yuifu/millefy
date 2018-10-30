@@ -1,15 +1,26 @@
-# Millefy
-Millefy: Genome browser-like visualization of single-cell RNA-seq dataset
+# <img src="img/logo.svg" width="30%" align="right" /> Millefy
+
+
+Millefy provides genome browser-like visualization of single-cell RNA sequensing (scRNA-seq) datasets.
+
+Millefy is available as an R package and [a Docker image with JupyterLab](https://github.com/yuifu/datascience-notebook-millefy).
 
 ## Example of millefy plot
 
-TODO
+<img src="img/Pou5f1.png" width="100%" />
 
-## Requirements
+
+## Installation
+
+```
+devtools::install_github("yuifu/millefy")
+```
+
+### Requirements
 
 - R (version 3.2.2 or higher)
 
-## Dependency
+### Dependency
 
 - Rsamtools
 - GenomicRanges
@@ -22,11 +33,6 @@ TODO
 - IRanges
 - tidyr
 
-## Installation
-
-```
-devtools::install_github("yuifu/millefy")
-```
 
 ## Usage
 
