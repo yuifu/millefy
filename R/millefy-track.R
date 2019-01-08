@@ -485,7 +485,7 @@ plotScHeatmapTrack <- function(track, select, nbin, binsize, sc_avg, sc_avg_log,
   popViewport()
   
   pushViewport(viewport(layout.pos.row = 2, layout.pos.col = 1))
-  if(is.null(sc_sort_destiny) || sc_sort_destiny != 'all'){
+  if(sc_sort_destiny == 'group'){
     plotGroupLabel(groups)
   }
   popViewport()
