@@ -19,14 +19,14 @@
 #' path_gtf = "annotation/gencode.gtf"
 #' dt_gtf_exon <- gtfToDtExon(path_gtf) 
 #' geneTrack1 <- list(path_gtf = path_gtf, dt_gtf = dt_gtf_exon, label = "GENCODE")
-#' # Prepare arguments for \code{millefyPlot4()}
+#' # Prepare arguments for \code{millefyPlot()}
 #' tdlist <- list(scTrackBw, geneTrack1)
 #' tt <- c("sc", "gene")
 #' heights = c(12, 2)
 #' text_main = "My plot"
 #' 
 #' # Plot
-#' l <- millefyPlot4(track_data=tdlist, track_type=tt, heights=heights, 
+#' l <- millefyPlot(track_data=tdlist, track_type=tt, heights=heights, 
 #'           sc_type = "heatmap", 
 #'           chr = chr, start = start, end = end, 
 #'           sc_avg = TRUE, sc_avg_height = 1, 
@@ -34,7 +34,7 @@
 #' 
 #' # Replot
 #' invisible(
-#'   millefyPlot4(
+#'   millefyPlot(
 #'         track_data=l$track_data, track_type=l$track_type, heights=l$heights, 
 #'         sc_type = "heatmap", 
 #'         chr = chr, start = start, end = end, 
@@ -45,7 +45,7 @@
 #' 
 #' # Replot
 #' invisible(
-#'   millefyPlot4(
+#'   millefyPlot(
 #'         track_data=l$track_data, track_type=l$track_type, heights=l$heights, 
 #'         sc_type = "heatmap", 
 #'         chr = chr, start = start, end = end, 
@@ -57,14 +57,14 @@
 #' 
 #' 
 
-millefyPlot4 <- function(
+millefyPlot <- function(
                           track_data, track_type, heights, sc_type = c("coverage", "heatmap"), 
                           chr, start, end, binsize, title, axis = TRUE, axis_height = 1, 
                           sc_avg = TRUE, sc_avg_height = 1, sc_avg_scale=NA, sc_avg_log = FALSE, 
                           sc_average_mode = c("mean", "median"), sc_sort_destiny = c('none', 'all', 'group')
                           ){
 
-  print(sprintf("Begin millefyPlot4: %s", Sys.time()))
+  print(sprintf("Begin millefyPlot: %s", Sys.time()))
    
   # track_data: list of list  scale, path	(avg == TRUE, avg_height, avg_scale)
   # track_type character vector {axis, bed, title, sc, avg, add, gene}
@@ -174,12 +174,13 @@ millefyPlot4 <- function(
   
   upViewport(0)
   
-  print(sprintf("Finished millefyPlot4: %s", Sys.time()))
+  print(sprintf("Finished millefyPlot: %s", Sys.time()))
   
   return(list(track_data = track_data, track_type = track_type, heights = heights))
 }
 
 
+millefyPlot4 <- millefyPlot
 
 
 plotBedTrack <- function(track, select){
