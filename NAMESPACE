@@ -2,7 +2,7 @@
 
 export(calcBamNormFactors)
 export(gtfToDtExon)
-export(millefyPlot4)
+export(millefyPlot)
 import(GenomicRanges)
 import(IRanges)
 import(Rsamtools)

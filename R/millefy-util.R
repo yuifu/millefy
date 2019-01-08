@@ -68,8 +68,6 @@ plotGroupLabel <- function(groups){
 
 # Maybe unnessesary
 addAggregationRows <- function(mat, groups){
-  levels_genuine <- levels(groups)[levels(groups) %in% groups]
-  
   rbind(mat,
         tapply(1:nrow(mat), groups, function(x){
           
@@ -78,12 +76,11 @@ addAggregationRows <- function(mat, groups){
           }
           colMeans(mat[x,], na.rm = T)
           
-        }) %>% unlist %>% matrix(nrow = length(levels_genuine), byrow = T)
+        }) %>% unlist %>% matrix(nrow = length(levels(droplevels(groups))), byrow = T)
   )
 }
 
 makeAggregationMatrix <- function(mat, groups, average_mode){
-  levels_genuine <- levels(groups)[levels(groups) %in% groups]
   if(average_mode == "mean"){
     tapply(1:nrow(mat), groups, function(x){
       
@@ -92,7 +89,7 @@ makeAggregationMatrix <- function(mat, groups, average_mode){
       }
       colMeans(mat[x,], na.rm = T)
       
-    }) %>% unlist %>% matrix(nrow = length(levels_genuine), byrow = T)
+    }) %>% unlist %>% matrix(nrow = length(levels(droplevels(groups))), byrow = T)
   }else{
     tapply(1:nrow(mat), groups, function(x){
       
@@ -101,19 +98,17 @@ makeAggregationMatrix <- function(mat, groups, average_mode){
       }
       apply(mat[x,], 2, function(y){median(y,na.rm=TRUE)})
       
-    }) %>% unlist %>% matrix(nrow = length(levels_genuine), byrow = T)
+    }) %>% unlist %>% matrix(nrow = length(levels(droplevels(groups))), byrow = T)
   }
 }
 
 makeAggregationGroups <- function(groups, prefix = "Avg ", suffix = ""){
-  levels_genuine <- levels(groups)[levels(groups) %in% groups]
-  factor(paste0(prefix, levels_genuine, suffix), levels = paste0(prefix, levels_genuine, suffix))
+  factor(paste0(prefix, levels(droplevels(groups)), suffix), levels = paste0(prefix, levels(droplevels(groups)), suffix))
 }
 
 # Maybe unnessesary
 addAggregationGroups <- function(groups, prefix = "Avg ", suffix = ""){
-  levels_genuine <- levels(groups)[levels(groups) %in% groups]
-  factor(c(as.character(groups), paste0(prefix, levels_genuine, suffix)), levels = c(levels(groups), paste0(prefix, levels_genuine, suffix)))
+  factor(c(as.character(groups), paste0(prefix, levels(droplevels(groups)), suffix)), levels = c(levels(groups), paste0(prefix, levels(droplevels(groups)), suffix)))
 }
 
 makeColorLabels <- function(group_colors, groups){

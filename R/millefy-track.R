@@ -180,6 +180,7 @@ millefyPlot <- function(
 }
 
 
+# For backward compatibility
 millefyPlot4 <- millefyPlot
 
 
@@ -356,8 +357,7 @@ plotCoverageTrack <- function(track, select, nbin, binsize, max_value){
 
 runMakeAggregationMatrix <- function(track, select, nbin, binsize, sc_avg, sc_avg_log, sc_average_mode = "mean"){
   groups <- factor(track$groups)
-  levels_genuine <- levels(groups)[levels(groups) %in% groups]
-  groups <- factor(groups, levels = levels_genuine)
+  groups <- droplevels(groups)
   
   group_colors <- track$group_colors
   color_labels <- makeColorLabels(group_colors, groups)
@@ -404,8 +404,7 @@ plotScHeatmapTrack <- function(track, select, nbin, binsize, sc_avg, sc_avg_log,
   pal <- pal(breaks)
   
   groups <- factor(track$groups)
-  levels_genuine <- levels(groups)[levels(groups) %in% groups]
-  groups <- factor(groups, levels = levels_genuine)
+  groups <- droplevels(groups)
   
   group_colors <- track$group_colors
   color_labels <- makeColorLabels(group_colors, groups)
@@ -465,7 +464,6 @@ plotScHeatmapTrack <- function(track, select, nbin, binsize, sc_avg, sc_avg_log,
     }
   }
   
-  
   mat2[mat2 > max_value] <- max_value
   
   pushViewport(plotViewport(c(0.5,0,0.5,0)))
@@ -496,7 +494,8 @@ plotScHeatmapTrack <- function(track, select, nbin, binsize, sc_avg, sc_avg_log,
   
   track$mat = mat
   track$max_value = max_value
-  
+
+
   return(track)
 #   if(sc_avg){
 #     mat_a <- makeAggregationMatrix(mat, groups, average_mode = sc_average_mode)
@@ -555,9 +554,8 @@ runDiffusionMap<- function(mat){
 
 calcScAvgHeight <- function(track, sc_avg_height){
   groups <- factor(track$groups)
-  levels_genuine <- levels(groups)[levels(groups) %in% groups]
-  
-  sc_avg_height * length(levels_genuine)
+  groups <- droplevels(groups)
+  sc_avg_height * length(levels(groups))
 }
 
 

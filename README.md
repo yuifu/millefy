@@ -53,14 +53,14 @@ scTrackBw <- list(path_bam_files = bwfiles, groups = groups, group_colors = colo
 path_gtf = "annotation/gencode.gtf"
 dt_gtf_exon <- gtfToDtExon(path_gtf)
 geneTrack1 <- list(path_gtf = path_gtf, dt_gtf = dt_gtf_exon, label = "GENCODE")
-# Prepare arguments for \\code{millefyPlot4()}
+# Prepare arguments for \\code{millefyPlot()}
 tdlist <- list(scTrackBw, geneTrack1)
 tt <- c("sc", "gene")
 heights = c(12, 2)
 text_main = "My plot"
 
 # Plot
-l <- millefyPlot4(track_data=tdlist, track_type=tt, heights=heights,
+l <- millefyPlot(track_data=tdlist, track_type=tt, heights=heights,
           sc_type = "heatmap",
           chr = chr, start = start, end = end,
           sc_avg = TRUE, sc_avg_height = 1,
@@ -68,7 +68,7 @@ l <- millefyPlot4(track_data=tdlist, track_type=tt, heights=heights,
 
 # Replot
 invisible(
-  millefyPlot4(
+  millefyPlot(
         track_data=l$track_data, track_type=l$track_type, heights=l$heights,
         sc_type = "heatmap",
         chr = chr, start = start, end = end,
@@ -79,7 +79,7 @@ invisible(
 
 # Replot
 invisible(
-  millefyPlot4(
+  millefyPlot(
         track_data=l$track_data, track_type=l$track_type, heights=l$heights,
         sc_type = "heatmap",
         chr = chr, start = start, end = end,
