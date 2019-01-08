@@ -237,7 +237,7 @@ plotGeneTrack <- function(track, select){
   
   if(!is.null(track$label)){
     pushViewport(viewport(layout.pos.row = 1, layout.pos.col = 2))
-    plotGroupLabel(factor(track$label))
+    plotGroupLabel(track$label)
     popViewport()
   }
   
