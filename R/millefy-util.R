@@ -117,15 +117,11 @@ addAggregationGroups <- function(groups, prefix = "Avg ", suffix = ""){
 }
 
 makeColorLabels <- function(group_colors, groups){
-  if(length(group_colors) == nlevels(groups)){
-    group_colors[as.numeric(groups)]
-  }else{
-    c(group_colors[as.numeric(groups)[as.numeric(groups)<=length(group_colors)]], group_colors)
-  }
+  group_colors[levels(groups)[groups]]
 }
 
 makeAggregationColorLabels <- function(group_colors, groups){
-  group_colors[as.numeric(unique(groups))]
+  group_colors[levels(groups)]
 }
 
 plotYvalue <- function(nr, max_color, min_color){
