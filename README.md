@@ -35,24 +35,33 @@ devtools::install_github("yuifu/millefy")
 
 
 ## Usage
-
+<!-- ### Tutorial
+See [Tutorial](tutorial/Tutorial.md) for details.
+ -->
 ### Example
 
 ```
 # Path to bigWig files
 bwfiles = c("bw1.bw", "bw2.bw", "bw3.bw", "bw4.bw", "bw5.bw")
+
 # Group labels for bigWig files (same length as \\code{bwfiles})
 groups = c("A", "A", "A", "B", "B")
+
 # Color labels for bigWig files (same length as \\code{bwfiles})
 color_labels <- colorRampPalette(c("yellow", "red"))(length(unique(groups))+1)[1:length(unique(groups))]
+names(color_labels)  <- unique(groups)
+
 # Parameters
 max_value = 7873
+
 # Single cell track
 scTrackBw <- list(path_bam_files = bwfiles, groups = groups, group_colors = color_labels, max_value = max_value, isBw=TRUE)
+
 # Gene annotation track (For faster performance, try to use \\code{dt_gtf} paramter)
 path_gtf = "annotation/gencode.gtf"
 dt_gtf_exon <- gtfToDtExon(path_gtf)
 geneTrack1 <- list(path_gtf = path_gtf, dt_gtf = dt_gtf_exon, label = "GENCODE")
+
 # Prepare arguments for \\code{millefyPlot()}
 tdlist <- list(scTrackBw, geneTrack1)
 tt <- c("sc", "gene")
@@ -96,8 +105,6 @@ invisible(
 path_gtf = system.file("extdata", "example.gtf", package="millefy")
 bwfiles = Sys.glob(file.path(system.file("extdata", "example_bw", package="millefy"), "*.bw"))
 ```
-
-
 
 ## License
 
