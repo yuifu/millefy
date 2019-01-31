@@ -27,7 +27,7 @@ bamCoverage -b [BAM file] -o [BigWig file] -of bigwig --binSize 1 --smoothLength
 
 If your data is derived from strand-specific (sc)RNA-seq experiments, you may want to separately visualize read coverage on forward and reverse strand. To achieve strand-specific visualization of read coverage of BigWig files, you need to generate strand-specific BigWig files in advance.
 
-The below is the example when your strand-specific (sc)RNA-seq experiments is where R1 reads are derived from antisense and R2 reads are derived from sense strand of RNAs:
+Here, we assume that your strand-specific (sc)RNA-seq experiments have yielded R1 and R2 reads that are derived from antisense and sense strand of RNAs, respectively. In this case, we have to consider (1) whether a read is R1 or R2 and (2) whether a read is mapped to the forward or reverse strands:
 
 | R1/R2 | Genome mapping | Derived strand |
 | -- | -- | --|
@@ -35,6 +35,8 @@ The below is the example when your strand-specific (sc)RNA-seq experiments is wh
 | R1 | Reverse (-) | Forward |
 | R2 | Forward (+) | Forward |
 | R2 | Reverse (-) | Reverse |
+
+> __Note__: For other types of strand-specific (sc)RNA-seq experiments, the below code cannot be directly used and has to be modified.
 
 First, we separate reads derived from the forward strand and reverse strand in a BAM file into two BAM files. Specifically, 
 
