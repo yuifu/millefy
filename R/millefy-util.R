@@ -156,3 +156,7 @@ maxIgnoreOutlier <- function(mat){
   }
 }
 
+
+isAppropriateColorLabels <- function(group_colors, groups){
+  is.vector(group_colors) & !any(is.na(names(group_colors))) & all(groups %in% names(group_colors))
+}

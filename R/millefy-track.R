@@ -360,6 +360,14 @@ runMakeAggregationMatrix <- function(track, select, nbin, binsize, sc_avg, sc_av
   groups <- droplevels(groups)
   
   group_colors <- track$group_colors
+
+  e <- try({
+    isAppropriateColorLabels(group_colors, groups)
+    }, silent=TRUE)
+  if(class(e) == "try-error"){
+    cat("Group colors must be a named vector.\n")
+  }
+
   color_labels <- makeColorLabels(group_colors, groups)
   
   mat <- track$mat
@@ -407,6 +415,14 @@ plotScHeatmapTrack <- function(track, select, nbin, binsize, sc_avg, sc_avg_log,
   groups <- droplevels(groups)
   
   group_colors <- track$group_colors
+
+  e <- try({
+    isAppropriateColorLabels(group_colors, groups)
+    }, silent=TRUE)
+  if(class(e) == "try-error"){
+    cat("Group colors must be a named vector.\n")
+  }
+
   color_labels <- makeColorLabels(group_colors, groups)
   
   if(is.null(track$mat)){
