@@ -25,9 +25,16 @@ bamCoverage -b [BAM file] -o [BigWig file] -of bigwig --binSize 1 --smoothLength
 
 ### 1-2. Converting BAM to BigWig files using deepTools while separating read coverage on forward and reverse strand in strand-specific (sc)RNA-seq data
 
-If your data is derived from strand-specific (sc)RNA-seq experiments and you want to visualize read coverage 
+If your data is derived from strand-specific (sc)RNA-seq experiments, you may want to separately visualize read coverage on forward and reverse strand. To achieve strand-specific visualization of read coverage of BigWig files, you need to generate strand-specific BigWig files in advance.
 
-The below is the example when your strand-specific (sc)RNA-seq experiments is where R1 reads are derived from antisense and R2 reads are derived from sense strand of RNAs.
+The below is the example when your strand-specific (sc)RNA-seq experiments is where R1 reads are derived from antisense and R2 reads are derived from sense strand of RNAs:
+
+| R1/R2 | Genome mapping | Derived strand |
+| -- | -- | --|
+| R1 | Forward (+) | Reverse |
+| R1 | Reverse (-) | Forward |
+| R2 | Forward (+) | Forward |
+| R2 | Reverse (-) | Reverse |
 
 First, we separate reads derived from the forward strand and reverse strand in a BAM file into two BAM files. Specifically, 
 
@@ -93,7 +100,7 @@ max_value = 7873
 scTrackBw <- list(path_bam_files = bwfiles, groups = groups, group_colors = color_labels, max_value = max_value, isBw=TRUE)
 ```
 
-#### Bulk NGS data trak
+#### Bulk NGS data track
 
 ```
 # Path to bigWig files
