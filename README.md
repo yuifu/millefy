@@ -35,9 +35,9 @@ devtools::install_github("yuifu/millefy")
 
 
 ## Usage
-<!-- ### Tutorial
+### Tutorial
 See [Tutorial](tutorial/Tutorial.md) for details.
- -->
+
 ### Example
 
 ```
@@ -47,7 +47,7 @@ bwfiles = c("bw1.bw", "bw2.bw", "bw3.bw", "bw4.bw", "bw5.bw")
 # Group labels for bigWig files (same length as \\code{bwfiles})
 groups = c("A", "A", "A", "B", "B")
 
-# Color labels for bigWig files (same length as \\code{bwfiles})
+# Color labels for bigWig files (A named vector with the same length as the number of kinds of \\code{groups})
 color_labels <- colorRampPalette(c("yellow", "red"))(length(unique(groups))+1)[1:length(unique(groups))]
 names(color_labels)  <- unique(groups)
 

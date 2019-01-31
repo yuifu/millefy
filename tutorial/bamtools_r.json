@@ -1,0 +1,13 @@
+{
+    "filters" : [
+        { "id" : "R1_reverse",
+          "isFirstMate": "true",
+          "isReverseStrand" : "false"
+        },
+        { "id" : "R2_reverse",
+          "isSecondMate" : "true",
+          "isReverseStrand" : "true"
+        }
+    ],
+    "rule" : "R1_reverse | R2_reverse"
+}
