@@ -1,6 +1,22 @@
-#' Visualize single-cell RNA-Seq data
+#' Visualize read covearge in single-cell RNA-Seq data 
 #' 
-#' @param Description of parameters
+#' @param track_data A list of tracks.
+#' @param track_type A list of track types.
+#' @param heights A list of track heights.
+#' @param chr A string. Chromosome name.
+#' @param start An integer. Start position.
+#' @param end An integer. End position.
+#' @param sc_avg A logical. If TRUE (defalut), a track for averaged read coverage for every group is generated.
+#' @param sc_avg_height A number. The height of the averaged read coverage track.
+#' @param sc_sort_destiny 'none' (default) or 'all' or 'group'.
+#' @param title A string. Title.
+#' @param binsize A integer. By default bin size is automatically determined so that the number of bins is 1000.
+#' @param axis A logical. If TRUE (default), axis for genomic coordinate is shown.
+#' @param axis_height A number. The height of the axis track.
+#' @param sc_average_mode A string. "mean" (default) or "median". How to summarise single-cell read coverage across samples in every group.
+#' @param sc_avg_scale A number. Maximum value of the averaged read coverage track.
+#' @param sc_avg_log A logical. If TRUE (default is FALSE), the values in the averaged read coverage track is log-transformed.
+#' @param sc_type A string. "heatmap" (default) or "coverage".
 #' @return Description of return values
 #' @export
 #'
@@ -11,6 +27,7 @@
 #' groups = c("A", "A", "A", "B", "B")
 #' # Color labels for bigWig files (same length as \code{bwfiles})
 #' color_labels <- colorRampPalette(c("yellow", "red"))(length(unique(groups))+1)[1:length(unique(groups))]
+#' names(color_labels) <- unique(groups)
 #' # Parameters
 #' max_value = 7873
 #' # Single cell track
