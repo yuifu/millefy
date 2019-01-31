@@ -83,7 +83,7 @@ l <- millefyPlot(track_data=tdlist, track_type=tt, heights=heights,
           sc_avg = TRUE, sc_avg_height = 1,
           title = text_main)
 ```
-<img src="img/millefy_plot_example_default.png" width="20" />
+<img src="img/millefy_plot_example_default.png" width="20%" />
 
 ```
 # Replot
@@ -98,7 +98,7 @@ invisible(
 )
 ```
 
-<img src="img/millefy_plot_example_all.png" width="20" />
+<img src="img/millefy_plot_example_all.png" width="20%" />
 
 
 ```
@@ -115,7 +115,7 @@ invisible(
 )
 ```
 
-<img src="img/millefy_plot_example_group.png" width="20" />
+<img src="img/millefy_plot_example_group.png" width="20%" />
 
 ## License
 
