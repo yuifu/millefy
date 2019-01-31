@@ -75,6 +75,9 @@ end = 5845478 # integer
 
 ```
 
+
+When we don't set the `sc_sort_destiny` parameter (default), the order of single cells is the order of `bwfiles`.
+
 ```
 # Plot
 l <- millefyPlot(track_data=tdlist, track_type=tt, heights=heights,
@@ -83,7 +86,9 @@ l <- millefyPlot(track_data=tdlist, track_type=tt, heights=heights,
           sc_avg = TRUE, sc_avg_height = 1,
           title = text_main)
 ```
-<img src="img/millefy_plot_example_default.png" width="20%" />
+<img src="img/millefy_plot_example_default.png" width="40%" />
+
+When we set `sc_sort_destiny = 'all'`, all single cells are reordered by diffusion maps.
 
 ```
 # Replot
@@ -98,7 +103,12 @@ invisible(
 )
 ```
 
-<img src="img/millefy_plot_example_all.png" width="20%" />
+
+
+<img src="img/millefy_plot_example_all.png" width="40%" />
+
+
+When we set `sc_sort_destiny = 'group'`, all single cells in each group are reordered by diffusion maps.
 
 
 ```
