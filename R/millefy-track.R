@@ -87,7 +87,7 @@ millefyPlot <- function(
   # track_type character vector {axis, bed, title, sc, avg, add, gene}
   # heights: example: unit(c(1,1,12,2,1), c("null", "cm", "null", "null", "null")
   
-  sc_type <- match.arg(sc_type, c("coverage", "heatmap"))
+  sc_type <- match.arg(sc_type, c("heatmap", "coverage"))
   sc_average_mode <- match.arg(sc_average_mode, c("mean", "median"))
   sc_sort_destiny <- match.arg(sc_sort_destiny, c('none', 'all', 'group'))
   
