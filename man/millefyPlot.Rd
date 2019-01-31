@@ -2,7 +2,7 @@
 % Please edit documentation in R/millefy-track.R
 \name{millefyPlot}
 \alias{millefyPlot}
-\title{Visualize single-cell RNA-Seq data}
+\title{Visualize read covearge in single-cell RNA-Seq data}
 \usage{
 millefyPlot(track_data, track_type, heights, sc_type = c("coverage",
   "heatmap"), chr, start, end, binsize, title, axis = TRUE, axis_height = 1,
@@ -11,13 +11,45 @@ millefyPlot(track_data, track_type, heights, sc_type = c("coverage",
   sc_sort_destiny = c("none", "all", "group"))
 }
 \arguments{
-\item{Description}{of parameters}
+\item{track_data}{A list of tracks.}
+
+\item{track_type}{A list of track types. Track types are: "sc", "bed", "add" (bulk NGS), "avg", "gene", "title", "axis".}
+
+\item{heights}{A list of track heights. Or, you can use a unit (e.g., `unit(c(1,1,12,2,1), c("null", "cm", "null", "null", "null")`).}
+
+\item{sc_type}{A string. "heatmap" (default) or "coverage".}
+
+\item{chr}{A string. Chromosome name.}
+
+\item{start}{An integer. Start position.}
+
+\item{end}{An integer. End position.}
+
+\item{binsize}{A integer. By default bin size is automatically determined so that the number of bins is 1000.}
+
+\item{title}{A string. Title.}
+
+\item{axis}{A logical. If TRUE (default), axis for genomic coordinate is shown.}
+
+\item{axis_height}{A number. The height of the axis track.}
+
+\item{sc_avg}{A logical. If TRUE (defalut), a track for averaged read coverage for every group is generated.}
+
+\item{sc_avg_height}{A number. The height of the averaged read coverage track.}
+
+\item{sc_avg_scale}{A number. Maximum value of the averaged read coverage track.}
+
+\item{sc_avg_log}{A logical. If TRUE (default is FALSE), the values in the averaged read coverage track is log-transformed.}
+
+\item{sc_average_mode}{A string. "mean" (default) or "median". How to summarise single-cell read coverage across samples in every group.}
+
+\item{sc_sort_destiny}{'none' (default) or 'all' or 'group'.}
 }
 \value{
 Description of return values
 }
 \description{
-Visualize single-cell RNA-Seq data
+Visualize read covearge in single-cell RNA-Seq data
 }
 \examples{
 # Path to bigWig files
@@ -26,6 +58,7 @@ bwfiles = c("bw1.bw", "bw2.bw", "bw3.bw", "bw4.bw", "bw5.bw")
 groups = c("A", "A", "A", "B", "B")
 # Color labels for bigWig files (same length as \\code{bwfiles})
 color_labels <- colorRampPalette(c("yellow", "red"))(length(unique(groups))+1)[1:length(unique(groups))]
+names(color_labels) <- unique(groups)
 # Parameters
 max_value = 7873
 # Single cell track
