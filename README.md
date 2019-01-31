@@ -38,7 +38,7 @@ devtools::install_github("yuifu/millefy")
 ### Tutorial
 See [Tutorial](tutorial/Tutorial.md) for details.
 
-### Example
+### Quick example
 
 ```
 # Path to bigWig files
@@ -125,7 +125,7 @@ invisible(
 )
 ```
 
-<img src="img/millefy_plot_example_group.png" width="20%" />
+<img src="img/millefy_plot_example_group.png" width="40%" />
 
 ## License
 
