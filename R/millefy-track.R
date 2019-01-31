@@ -1,8 +1,8 @@
 #' Visualize read covearge in single-cell RNA-Seq data 
 #' 
 #' @param track_data A list of tracks.
-#' @param track_type A list of track types.
-#' @param heights A list of track heights.
+#' @param track_type A list of track types. Track types are: "sc", "bed", "add" (bulk NGS), "avg", "gene", "title", "axis".
+#' @param heights A list of track heights. Or, you can use a unit (e.g., `unit(c(1,1,12,2,1), c("null", "cm", "null", "null", "null")`).
 #' @param chr A string. Chromosome name.
 #' @param start An integer. Start position.
 #' @param end An integer. End position.
