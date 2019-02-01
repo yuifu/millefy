@@ -10,17 +10,18 @@ Millefy is available as an R package and [a Docker image with JupyterLab](https:
 <img src="img/Pou5f1.png" width="100%" />
 
 
-## Installation
+## Getting started
+### Installation
 
 ```
 devtools::install_github("yuifu/millefy")
 ```
 
-### Requirements
+#### Requirements
 
 - R (version 3.2.2 or higher)
 
-### Dependency
+#### Dependency
 
 - Rsamtools
 - GenomicRanges
@@ -32,11 +33,6 @@ devtools::install_github("yuifu/millefy")
 - rtracklayer
 - IRanges
 - tidyr
-
-
-## Usage
-### Tutorial
-See [Tutorial](tutorial/Tutorial.md) for details.
 
 ### Quick example
 
@@ -103,10 +99,7 @@ invisible(
 )
 ```
 
-
-
 <img src="img/millefy_plot_example_all.png" width="40%" />
-
 
 When we set `sc_sort_destiny = 'group'`, all single cells in each group are reordered by diffusion maps.
 
@@ -127,6 +120,7 @@ invisible(
 
 <img src="img/millefy_plot_example_group.png" width="40%" />
 
-## License
 
-Copyright (c) 2017 Haruka Ozaki Released under the MIT license
+## Learning more
+See [Tutorial](tutorial/Tutorial.md) for details.
+
