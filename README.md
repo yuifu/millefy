@@ -1,7 +1,7 @@
 # <img src="img/logo.svg" width="30%" align="right" /> Millefy
 
 
-Millefy is a tool for visualizing __read coverage of ssingle-cell RNA sequensing (scRNA-seq) datasets__ in genomic contexts. By dynamically and automatically reorder single cells based on 'locus-specific' pseudotime, Millefy highlights cell-to-cell heterogeneity in read covreage of scRNA-seq data.
+Millefy is a tool for visualizing __read coverage of single-cell RNA sequensing (scRNA-seq) datasets__ in genomic contexts. By dynamically and automatically reorder single cells based on 'locus-specific' pseudotime, Millefy highlights cell-to-cell heterogeneity in read covreage of scRNA-seq data.
 
 Millefy is available as an R package and [a Docker image with JupyterLab](https://github.com/yuifu/datascience-notebook-millefy).
 
