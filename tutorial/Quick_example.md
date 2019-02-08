@@ -49,7 +49,7 @@ l <- millefyPlot(track_data=tdlist, track_type=tt, heights=heights,
           sc_avg = TRUE, sc_avg_height = 1,
           title = text_main)
 ```
-<img src="img/millefy_plot_example_default.png" width="40%" />
+<img src="../img/millefy_plot_example_default.png" width="40%" />
 
 When we set `sc_sort_destiny = 'all'`, all single cells are reordered by diffusion maps.
 
@@ -66,7 +66,7 @@ invisible(
 )
 ```
 
-<img src="img/millefy_plot_example_all.png" width="40%" />
+<img src="../img/millefy_plot_example_all.png" width="40%" />
 
 When we set `sc_sort_destiny = 'group'`, all single cells in each group are reordered by diffusion maps.
 
@@ -85,4 +85,4 @@ invisible(
 )
 ```
 
-<img src="img/millefy_plot_example_group.png" width="40%" />
+<img src="../img/millefy_plot_example_group.png" width="40%" />
