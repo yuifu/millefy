@@ -69,7 +69,7 @@ max_value = 7873
 scTrackBw <- list(path_bam_files = bwfiles, groups = groups, group_colors = color_labels, max_value = max_value, isBw=TRUE)
 
 # Gene annotation track (For faster performance, try to use \\\\code{dt_gtf} paramter)
-path_gtf = system.file("extdata", "example.gtf", package="millefy")
+path_gtf <- system.file("extdata", "example.gtf", package="millefy")
 dt_gtf_exon <- gtfToDtExon(path_gtf)
 geneTrack1 <- list(path_gtf = path_gtf, dt_gtf = dt_gtf_exon, label = "GENCODE")
 

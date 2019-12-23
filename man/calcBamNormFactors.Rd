@@ -19,6 +19,6 @@ Calculate normalization factors for visualization of BAM files
 }
 \examples{
 # Gene annotation track (For faster performance, try to use \\code{dt_gtf} paramter)
-bam_files = c("example1.bam", "example2.bam")
+bam_files = Sys.glob(file.path(system.file("extdata/bam", package="millefy"), "*.bam"))
 normFactors = calcBamNormFactors(bam_files)
 }
