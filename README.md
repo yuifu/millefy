@@ -17,8 +17,16 @@ Millefy is available as an R package and [a Docker image with JupyterLab](https:
 ```
 install.packages(c("data.table", "dtplyr", "proxy", "viridisLite"), dependencies=TRUE)
 
+
+# For R < 3.5.0 users
 source("https://bioconductor.org/biocLite.R"); biocLite()
 biocLite(c('Rsamtools', 'GenomicRanges',  'rtracklayer', 'destiny'))
+
+# For R >= 3.5.0 users
+if (!requireNamespace("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+BiocManager::install(c('Rsamtools', 'GenomicRanges',  'rtracklayer', 'destiny'))
+
 
 devtools::install_github("yuifu/millefy")
 ```
