@@ -51,38 +51,44 @@ l <- millefyPlot(track_data=tdlist, track_type=tt, heights=heights,
 ```
 <img src="../img/millefy_plot_example_default.png" width="40%" />
 
-When we set `sc_sort_destiny = 'all'`, all single cells are reordered by diffusion maps.
+<!-- ## Replot using `millefy_adjust()`
+You can adjust the Millefy plot using `millefy_adjust()`.
+
+For example, when we set `sc_sort_destiny = 'all'`, all single cells are reordered by diffusion maps.
 
 ```
 # Replot
-invisible(
-  millefyPlot(
-        track_data=l$track_data, track_type=l$track_type, heights=l$heights,
-        sc_type = "heatmap",
-        chr = chr, start = start, end = end,
-        sc_avg = TRUE, sc_avg_height = 1,
-        title = text_main, sc_avg_scale = 10, sc_sort_destiny = 'all'
-        )
-)
+millefy_adjust(sc_avg_scale = 10, sc_sort_destiny = 'all')
+```
+
+
+When we set `sc_sort_destiny = 'group'`, all single cells in each group are reordered by diffusion maps.
+
+ -->
+When we set `sc_sort_destiny = 'all'`, all single cells are reordered by diffusion maps.
+
+```
+l <- millefyPlot(track_data=tdlist, track_type=tt, heights=heights,
+          sc_type = "heatmap",
+          chr = chr, start = start, end = end,
+          sc_avg = TRUE, sc_avg_height = 1,
+          title = text_main)
 ```
 
 <img src="../img/millefy_plot_example_all.png" width="40%" />
 
-When we set `sc_sort_destiny = 'group'`, all single cells in each group are reordered by diffusion maps.
-
+You can do the same thing using `millefy_adjust()`. Use of `millefy_adjust()` is faster since it reuses read coverage data in the last Millefy plot.
 
 ```
 # Replot
-invisible(
-  millefyPlot(
-        track_data=l$track_data, track_type=l$track_type, heights=l$heights,
-        sc_type = "heatmap",
-        chr = chr, start = start, end = end,
-        sc_avg = TRUE, sc_avg_height = 1,
-        title = text_main,
-        sc_avg_scale = 10, sc_sort_destiny = 'group'
-        )
-)
+millefy_adjust(sc_sort_destiny = 'all')
+```
+
+When we set `sc_sort_destiny = 'group'`, all single cells in each group are reordered by diffusion maps.
+
+```
+# Replot
+millefy_adjust(sc_sort_destiny = 'group')
 ```
 
 <img src="../img/millefy_plot_example_group.png" width="40%" />

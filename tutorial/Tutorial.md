@@ -187,81 +187,56 @@ l <- millefyPlot(track_data=tdlist, track_type=tt, heights=heights,
 When we set `sc_sort_destiny = 'all'`, all single cells are reordered by diffusion maps.
 
 ```
+l <- millefyPlot(track_data=tdlist, track_type=tt, heights=heights,
+          sc_type = "heatmap",
+          chr = chr, start = start, end = end,
+          sc_avg = TRUE, sc_avg_height = 1,
+          title = text_main)
+```
+
+You can do the same thing using `millefy_adjust()`. Use of `millefy_adjust()` is faster since it reuses read coverage data in the last Millefy plot.
+
+```
 # Replot
-invisible(
-  millefyPlot(
-        track_data=l$track_data, track_type=l$track_type, heights=l$heights,
-        sc_type = "heatmap",
-        chr = chr, start = start, end = end,
-        sc_avg = TRUE, sc_avg_height = 1,
-        title = text_main, sc_avg_scale = 10, sc_sort_destiny = 'all'
-        )
-)
+millefy_adjust(sc_sort_destiny = 'all')
 ```
 
 When we set `sc_sort_destiny = 'group'`, all single cells in each group are reordered by diffusion maps.
 
-
 ```
 # Replot
-invisible(
-  millefyPlot(
-        track_data=l$track_data, track_type=l$track_type, heights=l$heights,
-        sc_type = "heatmap",
-        chr = chr, start = start, end = end,
-        sc_avg = TRUE, sc_avg_height = 1,
-        title = text_main,
-        sc_avg_scale = 10, sc_sort_destiny = 'group'
-        )
-)
+millefy_adjust(sc_sort_destiny = 'group')
 ```
 
 ### 3. Saving Millefy plots
 
-By putting `millefyPlot()` between `pdf()` and `dev.off()`, you can save the plot to a PDF file
+By putting `millefyPlot()` between `pdf()` and `dev.off()`, you can save the plot to a PDF file.
 
 ```
 # Save plots to a PDF file
 pdf("millefy_plot.pdf")
-invisible(
-  millefyPlot(
-        track_data=l$track_data, track_type=l$track_type, heights=l$heights,
-        sc_type = "heatmap",
-        chr = chr, start = start, end = end,
-        sc_avg = TRUE, sc_avg_height = 1,
-        title = text_main,
-        sc_avg_scale = 10, sc_sort_destiny = 'group'
-        )
-)
+l <- millefyPlot(track_data=tdlist, track_type=tt, heights=heights,
+          sc_type = "heatmap",
+          chr = chr, start = start, end = end,
+          sc_avg = TRUE, sc_avg_height = 1,
+          sc_sort_destiny = 'all',
+          title = text_main)
 dev.off()
 ```
 
-You can save the different versions of Millefy plot in a single PDF file.
+You can save the different versions of Millefy plots in a single PDF file.
 
 ```
 # Save plots to a PDF file
 pdf("millefy_plot_2.pdf")
-invisible(
-  millefyPlot(
-        track_data=l$track_data, track_type=l$track_type, heights=l$heights,
-        sc_type = "heatmap",
-        chr = chr, start = start, end = end,
-        sc_avg = TRUE, sc_avg_height = 1,
-        title = text_main,
-        sc_avg_scale = 10, sc_sort_destiny = 'group'
-        )
-)
+l <- millefyPlot(track_data=tdlist, track_type=tt, heights=heights,
+          sc_type = "heatmap",
+          chr = chr, start = start, end = end,
+          sc_avg = TRUE, sc_avg_height = 1,
+          sc_sort_destiny = 'all',
+          title = text_main)
 
-invisible(
-  millefyPlot(
-        track_data=l$track_data, track_type=l$track_type, heights=l$heights,
-        sc_type = "heatmap",
-        chr = chr, start = start, end = end,
-        sc_avg = TRUE, sc_avg_height = 1,
-        title = text_main,
-        sc_avg_scale = 10, sc_sort_destiny = 'group'
-        )
-)
+millefy_adjust(sc_sort_destiny = 'group')
 dev.off()
 ```
 
@@ -288,16 +263,12 @@ for(i in 1:nrow(df_loci)){
     # Save plots to a PDF file
     paste0("millefy_plot_", label, ".pdf")
     pdf("millefy_plot.pdf")
-    invisible(
-      millefyPlot(
-            track_data=l$track_data, track_type=l$track_type, heights=l$heights,
-            sc_type = "heatmap",
-            chr = chr, start = start, end = end,
-            sc_avg = TRUE, sc_avg_height = 1,
-            title = text_main,
-            sc_avg_scale = 10, sc_sort_destiny = 'group'
-            )
-    )
+    l <- millefyPlot(track_data=tdlist, track_type=tt, heights=heights,
+          sc_type = "heatmap",
+          chr = chr, start = start, end = end,
+          sc_avg = TRUE, sc_avg_height = 1,
+          sc_sort_destiny = 'all',
+          title = text_main)
     dev.off()
 }
 ```

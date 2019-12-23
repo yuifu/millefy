@@ -211,7 +211,15 @@ millefyPlot <- function(
   
   print(sprintf("Finished millefyPlot: %s", Sys.time()))
   
-  return(list(track_data = track_data, track_type = track_type, heights = heights))
+  millefy_plot <- list(track_data = track_data, track_type = track_type, heights = heights, 
+    plot_settings = list( # Save plot setting
+      sc_type=sc_type, chr=chr, start=start, end=end, binsize=binsize, title=tile, axis=axis, axis_height=axis_height,
+      sc_avg=sc_avg, sc_avg_height=sc_avg_height, sc_avg_scale=sc_avg_scale, sc_avg_log=sc_avg_log,
+      sc_average_mode, sc_sort_destiny
+    )
+  )
+  set_millefy_last_plot(millefy_plot)
+  return(millefy_plot)
 }
 
 
