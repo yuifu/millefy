@@ -118,7 +118,7 @@ names(color_labels_bulk)  <- unique(groups_bulk)
 # Calculating normalization factors
 nf_bulk = calcBamNormFactors(bamfiles_bulk)
 
-# Defining single cell track
+# Defining bulk NGS track
 bulkTrack1 <- list(path_bam_files = bamfiles_bulk, normFactor = nf_bulk, groups = groups_bulk, 
                   trackHeight = 1, log=FALSE, color_labels = color_labels_bulk)
 ```
@@ -157,7 +157,7 @@ geneTrack1 <- list(path_gtf = path_gtf, dt_gtf = dt_gtf_exon, label = "GENCODE")
 tdlist <- list(scTrackBw, bulkTrack1, bedTrack1, geneTrack1)
 
 # Defining track properties
-tt <- c("sc", "add", "bed" "gene")
+tt <- c("sc", "add", "bed", "gene")
 
 # Defining relative heights of tracks
 heights = c(12, 3, 1, 2)
