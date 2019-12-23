@@ -5,10 +5,10 @@
 \title{Adjust the last Millefy plot}
 \usage{
 millefy_adjust(max_value = NA_real_, heights = NA,
-  sc_type = NA_character_, binsize = NA_integer_,
-  title = NA_character_, axis = NA, axis_height = NA_real_,
-  sc_avg = NA, sc_avg_height = NA_real_, sc_avg_scale = NA_real_,
-  sc_avg_log = NA_real_, sc_average_mode = NA, sc_sort_destiny = NA)
+  sc_type = NA_character_, title = NA_character_, axis = NA,
+  axis_height = NA_real_, sc_avg = NA, sc_avg_height = NA_real_,
+  sc_avg_scale = NA_real_, sc_avg_log = NA_real_,
+  sc_average_mode = NA, sc_sort_destiny = NA)
 }
 \arguments{
 \item{max_value}{A number. The maximum value of heatmap color scaling.}
@@ -16,8 +16,6 @@ millefy_adjust(max_value = NA_real_, heights = NA,
 \item{heights}{A list of track heights. Or, you can use a unit (e.g., `unit(c(1,1,12,2,1), c("null", "cm", "null", "null", "null")`).}
 
 \item{sc_type}{A string. "heatmap" (default) or "coverage".}
-
-\item{binsize}{A integer. By default bin size is automatically determined so that the number of bins is 1000.}
 
 \item{title}{A string. Title.}
 
