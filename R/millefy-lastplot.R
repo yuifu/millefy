@@ -26,7 +26,6 @@ millefy_last_plot <- function() .millefy_store$get()
 #' @param max_value A number. The maximum value of heatmap color scaling.
 #' @param heights A list of track heights. Or, you can use a unit (e.g., `unit(c(1,1,12,2,1), c("null", "cm", "null", "null", "null")`).
 #' @param sc_type A string. "heatmap" (default) or "coverage".
-#' @param binsize A integer. By default bin size is automatically determined so that the number of bins is 1000.
 #' @param title A string. Title.
 #' @param axis A logical. If TRUE (default), axis for genomic coordinate is shown.
 #' @param axis_height A number. The height of the axis track.
@@ -86,7 +85,6 @@ millefy_adjust <- function(
         max_value=NA_real_,
         heights=NA,
         sc_type = NA_character_,
-        binsize = NA_integer_,
         title = NA_character_,
         axis = NA,
         axis_height = NA_real_,
@@ -106,7 +104,6 @@ millefy_adjust <- function(
     if(!is.na(heights) && length(heights)==length(l$heights)) l$heights <- heights
     # Adjust parameters (except for chr, start, end, track_data, track_type)
     if(!is.na(sc_type)) l$plot_settings$sc_type <- sc_type
-    if(!is.na(binsize)) l$plot_settings$binsize <- binsize
     if(!is.na(title)) l$plot_settings$title <- title
     if(!is.na(axis)) l$plot_settings$axis <- axis
     if(!is.na(axis_height)) l$plot_settings$axis_height <- axis_height
